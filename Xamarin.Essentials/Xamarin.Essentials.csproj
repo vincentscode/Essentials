@@ -1,20 +1,20 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.0;netstandard2.0;Xamarin.iOS10;Xamarin.TVOS10;Xamarin.WatchOS10;MonoAndroid60;MonoAndroid70;MonoAndroid71;MonoAndroid80;MonoAndroid81;MonoAndroid90;MonoAndroid10.0;tizen40;</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;netstandard2.0;Xamarin.iOS10;Xamarin.TVOS10;Xamarin.WatchOS10;MonoAndroid60;MonoAndroid70;MonoAndroid71;MonoAndroid80;MonoAndroid81;MonoAndroid90;MonoAndroid10.0;tizen40;NET472</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.16299;</TargetFrameworks>
     <AssemblyName>Xamarin.Essentials</AssemblyName>
     <RootNamespace>Xamarin.Essentials</RootNamespace>
     <PackageId>Xamarin.Essentials</PackageId>
     <!-- PackageIcon>icon.png</PackageIcon -->
     <PackageIconUrl>https://raw.githubusercontent.com/xamarin/Essentials/master/Assets/xamarin.essentials_128x128.png</PackageIconUrl>
-    <Summary>Xamarin.Essentials: a kit of essential API's for your apps</Summary>
+    <Summary>Xamarin.Essentials: a kit of essential API's for your apps - Customized by @vincentscode</Summary>
     <PackageTags>xamarin, windows, uwp, ios, android, watchos, tvos, tizen, toolkit, xamarin.forms, Xamarin.Essentials, kit</PackageTags>
-    <Title>Xamarin.Essentials</Title>
-    <Description>Xamarin.Essentials: a kit of essential API's for your apps</Description>
+    <Title>Xamarin.Essentials - Customized by @vincentscode</Title>
+    <Description>Xamarin.Essentials: a kit of essential API's for your apps - Customized by @vincentscode</Description>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-    <Version>1.0.0</Version>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.4.0.0</AssemblyFileVersion>
+    <Version>1.4.0</Version>
     <PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
     <Authors>Microsoft</Authors>
     <Owners>microsoft,Xamarin,XamarinNuGet</Owners>
@@ -105,6 +105,11 @@
     <PackageReference Include="Tizen.NET" Version="4.0.0" />
     <Compile Include="**\*.tizen.cs" />
     <Compile Include="**\*.tizen.*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('NET472')) ">
+    <PackageReference Include="OpenTK" Version="3.1.0" />
+    <Compile Include="**\*.gtk.cs" />
+    <Compile Include="**\*.gtk.*.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="mdoc.targets" />
